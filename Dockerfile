@@ -16,10 +16,10 @@ RUN HOME=/home/coder code-server \
     --install-extension redhat.vscode-xml \
     --install-extension redhat.fabric8-analytics \
     --install-extension ms-ceintl.vscode-language-pack-zh-hans
-
-RUN curl -O https://repo.huaweicloud.com/java/jdk/11.0.2+9/jdk-11.0.2_linux-x64_bin.tar.gz
-
-ADD jdk-11.0.2_linux-x64_bin.tar.gz /user/local/java
+    
+WORKDIR /app
+RUN curl -LJO https://repo.huaweicloud.com/java/jdk/11.0.2+9/jdk-11.0.2_linux-x64_bin.tar.gz
+RUN tar -zxvf jdk-11.0.2_linux-x64_bin.tar.gz -C /user/local/java
 
 # ADD extensions /home/coder/.local/share/code-server/extensions
 
