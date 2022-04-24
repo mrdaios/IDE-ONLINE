@@ -10,16 +10,16 @@ RUN chown $UID:$GID -R /home/coder
 
 USER $UID:$GID
 RUN HOME=/home/coder code-server \
-	--user-data-dir=/home/coder/.local/share/code-server \
+    --user-data-dir=/home/coder/.local/share/code-server \
     --install-extension vscjava.vscode-java-pack \
     --install-extension vscjava.vscode-spring-initializr \
     --install-extension redhat.vscode-xml \
     --install-extension redhat.fabric8-analytics \
     --install-extension ms-ceintl.vscode-language-pack-zh-hans
     
+WORKDIR /user/local/java
 WORKDIR /app
-RUN curl -LJO https://repo.huaweicloud.com/java/jdk/11.0.2+9/jdk-11.0.2_linux-x64_bin.tar.gz
-RUN tar -zxvf jdk-11.0.2_linux-x64_bin.tar.gz -C /user/local/java
+RUN curl -LJO https://repo.huaweicloud.com/java/jdk/11.0.2+9/jdk-11.0.2_linux-x64_bin.tar.gz && tar -zxvf jdk-11.0.2_linux-x64_bin.tar.gz -C /user/local/java
 
 # ADD extensions /home/coder/.local/share/code-server/extensions
 
